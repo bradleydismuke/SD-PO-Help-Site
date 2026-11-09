@@ -1,0 +1,15 @@
+export const SCRIPTS = [
+  ['Calling the session to order', '“The chamber will come to order. The [session number] session of the [name] Student Congress is now in session. The chair will now take attendance.”'],
+  ['Taking up legislation', '“The next item on the docket is [legislation title]. The chair recognizes [author] for a 3-minute authorship speech, followed by 2 minutes of questioning.”'],
+  ['Recognizing a speaker', '“The chair recognizes [name] from [school] for a [affirmative/negative] speech of 3 minutes, with 2 minutes of questioning.”'],
+  ['Asking for questions', '“Are there any questions for the speaker? The chair recognizes [name] for a question.”'],
+  ['Time signals', '“The speaker has 30 seconds remaining.” / “Time has expired. The speaker may conclude their sentence.”'],
+  ['Recognizing a motion', '“For what purpose does the member rise?” → “The chair recognizes [name] for a motion.”'],
+  ['Seconding', '“Is there a second?” … “It has been moved and seconded to [motion]. Is there debate?”'],
+  ['Putting the question (voice vote)', '“All those in favor say ‘aye.’ All opposed say ‘nay.’ The [ayes/nays] have it.” If unclear: “The chair is in doubt. We will have a division of the house.”'],
+  ['Ruling on a point of order', '“The point is [well taken / not well taken] because [reason]. The chamber will proceed.”'],
+  ['Handling a tie', '“The vote is tied. The motion fails.”'],
+  ['Previous question', '“The previous question has been moved and seconded. This requires a two-thirds vote and is not debatable. All in favor…”'],
+  ['Recess', '“A recess of [5] minutes has been called. The chamber stands in recess until [time].”'],
+  ['Adjourning', '“There being no further business, the chair will accept a motion to adjourn.” … “The session is adjourned.”'],
+];

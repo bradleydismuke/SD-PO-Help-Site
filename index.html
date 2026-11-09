@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PO Helper – Student Congress Presiding Officer Tool</title>
+<link rel="stylesheet" href="src/styles/main.css">
+</head>
+<body>
+<header>
+<h1>🏛️ PO Helper</h1>
+<div class="note">Student Congress presiding officer toolkit: timers, precedence &amp; recency, parliamentary procedure, voting. Always confirm against the current NSDA rules and your tournament's Congress rules.</div>
+</header>
+<nav id="tabs" aria-label="Tools"></nav>
+<main>
+
+<section id="timer" data-tab="⏱ Timer">
+<h2>Speech &amp; Questioning Timer</h2>
+<div class="row">
+<label>Type
+<select id="preset">
+<option value="180,120">Speech 3:00 → Questioning 2:00 (NSDA default)</option>
+<option value="180">Speech 3:00 only</option>
+<option value="120">Questioning 2:00 only</option>
+<option value="30">Single question/answer 0:30</option>
+</select></label>
+<label>Custom speech (sec) <input id="custom" type="number" min="10" style="width:6rem"></label>
+</div>
+<div class="note" id="phaseLabel">Ready</div>
+<div class="clock" id="clock">3:00</div>
+<div class="row center">
+<button class="primary" id="start">Start / Pause</button>
+<button id="reset">Reset</button>
+<button id="skip">Next phase</button>
+</div>
+<p class="note">NSDA default: 3-minute speech, then 2 minutes of questioning (direct questions, ~30 sec each recommended). Clock turns yellow at 30 seconds remaining, red when over. The PO may allow a grace period of a few seconds to finish a sentence per local rules. Beeps at end.</p>
+</section>
+
+<section id="prec" data-tab="📋 Precedence">
+<h2>Precedence &amp; Recency</h2>
+<p class="note">Precedence: the legislator (not the school) with the fewest speeches on the legislation recognized first. Recency: among equals, the one who spoke longest ago. Authors/sponsors give the first speech on each item, then speeches alternate affirmative/negative. Always check your tournament rules (some track by session, some by legislation).</p>
+<div class="row">
+<input id="legName" placeholder="Legislator name" >
+<input id="legSchool" placeholder="School (optional)">
+<button class="primary" id="addLeg">Add</button>
+<button id="clearLeg">Clear all</button>
+<button id="newItem">Start new legislation (reset per-item counts)</button>
+</div>
+<div class="next" id="nextBox">Add legislators to get a recommendation.</div>
+<table><thead><tr><th>Name</th><th>School</th><th>Session speeches</th><th>This item</th><th>Last spoke</th><th></th></tr></thead><tbody id="legBody"></tbody></table>
+<div class="row"><label>Current item stance for next speech:
+<select id="stance"><option>Affirmative</option><option>Negative</option></select></label>
+<button id="flip">Alternate</button></div>
+<p class="note">Clicking "Spoke" updates counts and recency order. Questioning counts as nothing toward precedence under standard NSDA practice unless your tournament says otherwise.</p>
+</section>
+
+<section id="motions" data-tab="📖 Procedure">
+<h2>Parliamentary Procedure Guide</h2>
+<p class="note">Based on Robert's Rules as modified for NSDA Student Congress. Listed in order of precedence (highest first).</p>
+<input id="msearch" placeholder="Search motions..." style="width:100%">
+<table><thead><tr><th>Motion / Point</th><th>Second?</th><th>Debate?</th><th>Vote</th><th>Notes</th></tr></thead><tbody id="mbody"></tbody></table>
+</section>
+
+<section id="vote" data-tab="🗳 Voting">
+<h2>Vote Counter</h2>
+<div class="grid">
+<div class="vote"><h3>Yes</h3><div class="tally" id="yes">0</div><button data-v="yes" data-d="1">+</button> <button data-v="yes" data-d="-1">−</button></div>
+<div class="vote"><h3>No</h3><div class="tally" id="no">0</div><button data-v="no" data-d="1">+</button> <button data-v="no" data-d="-1">−</button></div>
+<div class="vote"><h3>Abstain</h3><div class="tally" id="abs">0</div><button data-v="abs" data-d="1">+</button> <button data-v="abs" data-d="-1">−</button></div>
+</div>
+<div class="row"><label>Required <select id="thresh"><option value="maj">Majority (of yes+no)</option><option value="two">Two-thirds (of yes+no)</option></select></label>
+<button id="vreset">Reset</button></div>
+<div class="next" id="vresult"></div>
+<p class="note">Abstentions are not counted toward the total of votes cast. A tie fails. Ask for a division (re-count by hands) if the chair is unsure or a member calls for it.</p>
+</section>
+
+<section id="scripts" data-tab="🎤 Scripts">
+<h2>PO Scripts &amp; Session Flow</h2>
+<div id="scriptList"></div>
+</section>
+
+<section id="score" data-tab="⭐ PO Tips">
+<h2>PO Score Sheet Reminders</h2>
+<p class="note">Presiding officers are generally ranked on these. Confirm with your judging rubric.</p>
+<ul>
+<li><b>Efficiency:</b> keep the chamber moving; recognize speakers quickly, no dead time.</li>
+<li><b>Fairness:</b> accurate precedence/recency, consistent treatment of every member.</li>
+<li><b>Knowledge of procedure:</b> correct rulings, correct vote thresholds, proper motion order.</li>
+<li><b>Command &amp; poise:</b> confident, courteous, clear voice; use "the chair" language.</li>
+<li><b>Records:</b> accurate speech counts, questioning times, and a recorded vote on every motion.</li>
+</ul>
+<div class="row"><button id="resetAll">Reset all saved data</button></div>
+</section>
+
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
